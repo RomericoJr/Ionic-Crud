@@ -1,0 +1,7 @@
+{
+  "name": "ProductFront",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
