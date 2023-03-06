@@ -1,10 +1,6 @@
-<ion-header [translucent]="true">
-  <ion-toolbar>
-    <ion-title>
-      Tab 1
-    </ion-title>
-  </ion-toolbar>
-</ion-header>
+
+
+<app-hearder Title="All Products"></app-hearder>
 
 <ion-content [fullscreen]="true">
   <ion-header collapse="condense">
@@ -13,5 +9,8 @@
     </ion-toolbar>
   </ion-header>
 
-  <app-explore-container name="Tab 1 page"></app-explore-container>
+  <!-- <app-explore-container name="Tab 1 page"></app-explore-container> -->
+
+  <app-cards [cards]="cardsProduct"></app-cards>
+
 </ion-content>

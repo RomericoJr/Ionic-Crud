@@ -1,0 +1,77 @@
+<app-hearder Title="{{titleText}}"></app-hearder>
+
+<ion-content>
+
+  <form
+  [formGroup]="formProducto">
+
+    <ion-item fill="solid">
+      <ion-label position="floating">Name</ion-label>
+      <ion-input
+      type="text"
+      formControlName="name"
+      placeholder="Introduce el nombre del producto"></ion-input>
+    </ion-item>
+
+    <ion-item fill="solid">
+      <ion-label position="floating">Categoria</ion-label>
+      <ion-input
+      type="text"
+      formControlName="categoria"
+      placeholder="Elige la categoria"></ion-input>
+    </ion-item>
+
+    <ion-item fill="solid">
+      <ion-label position="floating">Marca</ion-label>
+      <ion-input
+      type="text"
+      formControlName="marca"
+      placeholder="Enter text"></ion-input>
+    </ion-item>
+
+    <ion-item fill="solid">
+      <ion-label position="floating">Descripción</ion-label>
+      <ion-input
+      type="text"
+      formControlName="descripcion"
+      placeholder="Enter text"></ion-input>
+    </ion-item>
+
+    <ion-item fill="solid">
+      <ion-label position="floating">Precio</ion-label>
+      <ion-input
+      type="number"
+      formControlName="precio"
+      placeholder="Enter text"></ion-input>
+    </ion-item>
+
+    <ion-item fill="solid">
+      <ion-label position="floating">Stock</ion-label>
+      <ion-input
+      type="number"
+      formControlName="stock"
+      placeholder="Enter text"></ion-input>
+    </ion-item>
+
+    <ion-item fill="solid">
+      <ion-label position="floating">UrlImage</ion-label>
+      <ion-input
+      type="text"
+      formControlName="UrlImage"
+      placeholder="Enter text"></ion-input>
+    </ion-item>
+
+    <ion-item fill="solid">
+      <ion-label position="floating">Estado</ion-label>
+      <ion-input
+      type="number"
+      formControlName="estado"
+      placeholder="Enter text"></ion-input>
+    </ion-item>
+
+    <ion-button [disabled]="formProducto.invalid" (click)="save()"  shope="round">
+      {{titleBtn}}
+    </ion-button>
+  </form>
+
+</ion-content>
