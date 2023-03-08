@@ -14,6 +14,14 @@ const routes: Routes = [
     path: 'edit/:id',
     loadChildren: ()=> import('./pages/add-edit-p/add-edit-p.module').then(m => m.AddEditPPageModule)
   },
+  {
+    path: 'addCategoria',
+    loadChildren: () => import('./pages/add-edit-categoria/add-edit-categoria.module').then( m => m.AddEditCategoriaPageModule)
+  },
+  {
+    path: 'editCategoria/:id',
+    loadChildren: () => import('./pages/add-edit-categoria/add-edit-categoria.module').then( m => m.AddEditCategoriaPageModule)
+  },
 ];
 @NgModule({
   imports: [

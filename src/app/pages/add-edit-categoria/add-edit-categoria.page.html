@@ -1,0 +1,19 @@
+<app-hearder Title="Agregar Categoria"></app-hearder>
+
+<ion-content>
+<form
+[formGroup]="formCategoria"
+>
+  <ion-item fill="solid" class="">
+    <ion-label position="floating">Nombre Categoria</ion-label>
+    <ion-input
+    type="text"
+    formControlName="Type_categoria"
+    placeholder="Introduce el nombre de la categoria"></ion-input>
+  </ion-item>
+
+  <ion-button [disabled]="formCategoria.invalid" (click)="save()"  shope="round">
+    Guardar
+  </ion-button>
+</form>
+</ion-content>

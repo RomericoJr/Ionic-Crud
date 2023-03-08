@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { product } from '../interface';
+import { product, categoria } from '../interface';
 
 @Injectable({
   providedIn: 'root'
@@ -30,5 +30,34 @@ export class CrudService {
   deleteProduct(id: number){
     return this.http.delete(this.laravelApi + 'deleteProducts/' + id);
   }
+
+
+  getMarca(){
+    return this.http.get(this.laravelApi + 'marcas');
+  }
+
+  getCategoria(){
+    return this.http.get(this.laravelApi + 'categorias');
+  }
+
+  getCategoriaById(){
+    return this.http.get(this.laravelApi + 'categorias');
+  }
+
+
+  createCategoria(categoria: categoria){
+    return this.http.post(this.laravelApi + 'newCategoria', categoria);
+  }
+
+  updateCategoria(categoria: categoria){
+    return this.http.put(this.laravelApi + 'updateCategorias/' + categoria.id, categoria);
+  }
+
+  deleteCategoria(id: number){
+    return this.http.delete(this.laravelApi + 'deleteCategorias/' + id);
+  }
+
+
+
 }
 

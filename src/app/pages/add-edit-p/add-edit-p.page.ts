@@ -15,17 +15,20 @@ export class AddEditPPage implements OnInit {
   titleText = 'Agregar producto';
   titleBtn = 'Agregar';
 
+  marca! : any;
+  categoria! : any;
+
   getDatos: any;
   idProduct! : any;
   formProducto: FormGroup =this.fb.group({
     name: ['',[Validators.required]],
-    categoria:['',[Validators.required]],
-    marca:['',[Validators.required]],
+    categoria_id:[,[Validators.required]],
+    marca_id:[,[Validators.required]],
     descripcion:['',[Validators.required]],
     precio:[,[Validators.required]],
     stock:[,[Validators.required]],
     UrlImage:['',[Validators.required]],
-    estado:[,[Validators.required]]
+    estado:[1,[Validators.required]]
 
   });
 
@@ -41,6 +44,15 @@ export class AddEditPPage implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.productService.getMarca().subscribe((datos: any) =>{
+      console.log('Estos son las marcas',datos);
+      this.marca = datos;
+    });
+    this.productService.getCategoria().subscribe((datos: any) =>{
+      console.log('Estos son las categorias',datos);
+      this.categoria = datos;
+    });
+
     // this.formProducto =this.fb.group({
     //   name: ['',[Validators.required]],
     //   categoria:['',[Validators.required]],
@@ -79,10 +91,12 @@ export class AddEditPPage implements OnInit {
 
           // });
 
+          // this.formProducto.reset(this.getDatos)
+
           this.formProducto.patchValue({
             name : datos[0].name,
-            categoria : datos[0].categoria,
-            marca : datos[0].marca,
+            categoria_id : datos[0].categoria_id,
+            marca_id : datos[0].marca_id,
             descripcion : datos[0].descripcion,
             precio : datos[0].precio,
             stock : datos[0].stock,
@@ -92,11 +106,6 @@ export class AddEditPPage implements OnInit {
 
 
         })
-        // subscribe((product: any) => {
-        //   this.formProducto = product;
-        //   console.log('Producto obtenido', product
-        //   );
-        // })
       }
     })
   }
@@ -115,7 +124,7 @@ export class AddEditPPage implements OnInit {
 
     console.log('Producto a actualizar', updateProduct);
   this.productService.updateProduct(updateProduct).
-  subscribe((update) => {
+  subscribe((update : any) => {
     console.log(update);
     if(update){
       this.presentToast('Producto actualizado', 'success');

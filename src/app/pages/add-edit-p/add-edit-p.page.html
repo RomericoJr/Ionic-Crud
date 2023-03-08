@@ -3,9 +3,10 @@
 <ion-content>
 
   <form
+  class="ion-padding ion-text-center ion-margin-top"
   [formGroup]="formProducto">
 
-    <ion-item fill="solid">
+    <ion-item fill="solid" class="">
       <ion-label position="floating">Name</ion-label>
       <ion-input
       type="text"
@@ -13,21 +14,56 @@
       placeholder="Introduce el nombre del producto"></ion-input>
     </ion-item>
 
-    <ion-item fill="solid">
-      <ion-label position="floating">Categoria</ion-label>
-      <ion-input
-      type="text"
-      formControlName="categoria"
-      placeholder="Elige la categoria"></ion-input>
-    </ion-item>
+    <ion-grid [fixed]="true" >
+      <ion-row>
+        <ion-col size="6" size-md="4" size-lg="2">
 
-    <ion-item fill="solid">
-      <ion-label position="floating">Marca</ion-label>
-      <ion-input
-      type="text"
-      formControlName="marca"
-      placeholder="Enter text"></ion-input>
-    </ion-item>
+
+          <ion-list>
+            <ion-item>
+              <ion-select
+              type="number"
+              formControlName="categoria_id"
+              placeholder="Elige la categoria">
+                <ion-select-option *ngFor="let category of categoria" value="{{category.id}}">{{category.Type_categoria}}</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-list>
+
+          <!-- <ion-item fill="solid">
+            <ion-label position="floating">Categoria</ion-label>
+            <ion-input
+            type="text"
+            formControlName="categoria_id"
+            placeholder="Elige la categoria"></ion-input>
+          </ion-item> -->
+
+        </ion-col >
+
+
+        <ion-col>
+
+          <ion-list>
+            <ion-item>
+              <ion-select
+              type="number"
+              formControlName="marca_id"
+            placeholder="Elige la marca">
+                <ion-select-option *ngFor="let marca of marca" value="{{marca.id}}">{{marca.Type_marca}}</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </ion-list>
+
+          <!-- <ion-item fill="solid">
+            <ion-label position="floating">Marca</ion-label>
+            <ion-input
+            type="text"
+            formControlName="marca_id"
+            placeholder="Enter text"></ion-input>
+          </ion-item> -->
+        </ion-col>
+      </ion-row>
+    </ion-grid>
 
     <ion-item fill="solid">
       <ion-label position="floating">Descripción</ion-label>
@@ -37,21 +73,34 @@
       placeholder="Enter text"></ion-input>
     </ion-item>
 
-    <ion-item fill="solid">
-      <ion-label position="floating">Precio</ion-label>
-      <ion-input
-      type="number"
-      formControlName="precio"
-      placeholder="Enter text"></ion-input>
-    </ion-item>
+    <ion-grid>
+      <ion-row>
 
-    <ion-item fill="solid">
-      <ion-label position="floating">Stock</ion-label>
-      <ion-input
-      type="number"
-      formControlName="stock"
-      placeholder="Enter text"></ion-input>
-    </ion-item>
+        <ion-col>
+          <ion-item fill="solid">
+            <ion-label position="floating">Precio</ion-label>
+            <ion-input
+            type="number"
+            formControlName="precio"
+            placeholder="Enter text"></ion-input>
+          </ion-item>
+        </ion-col>
+
+        <ion-col>
+          <ion-item fill="solid">
+            <ion-label position="floating">Stock</ion-label>
+            <ion-input
+            type="number"
+            formControlName="stock"
+            placeholder="Enter text"></ion-input>
+          </ion-item>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+
+
+
 
     <ion-item fill="solid">
       <ion-label position="floating">UrlImage</ion-label>
@@ -60,14 +109,15 @@
       formControlName="UrlImage"
       placeholder="Enter text"></ion-input>
     </ion-item>
+    <br>
 
-    <ion-item fill="solid">
+    <!-- <ion-item fill="solid">
       <ion-label position="floating">Estado</ion-label>
       <ion-input
       type="number"
       formControlName="estado"
       placeholder="Enter text"></ion-input>
-    </ion-item>
+    </ion-item> -->
 
     <ion-button [disabled]="formProducto.invalid" (click)="save()"  shope="round">
       {{titleBtn}}
