@@ -1,0 +1,49 @@
+
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title class= "ion-text-capitalize">Login</ion-title>
+
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <form
+  [formGroup]="formLogin">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label position="floating">Email</ion-label>
+          <ion-input type="email"
+          formControlName="email"
+          placeholder="introduce el email aqui"></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-item>
+          <ion-label position="floating">Password</ion-label>
+          <ion-input
+          type="password"
+          formControlName="password"
+          placeholder="Introduce la contraseña "></ion-input>
+        </ion-item>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col size="12">
+        <ion-button [disabled]="formLogin.invalid" (click)="save()" expand="block" >Login</ion-button>
+      </ion-col>
+    </ion-row>
+
+
+
+  </ion-grid>
+
+</form>
+
+</ion-content>

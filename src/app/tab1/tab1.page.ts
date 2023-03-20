@@ -23,7 +23,7 @@ export class Tab1Page {
     getAllProducts(){
       console.log('si sirvo');
       this.presentLoading();
-      this.productService.getAllProducts().subscribe((products: any)=>{
+      this.productService.getproductsMore().subscribe((products: any)=>{
         this.cardsProduct.push(...products);
         console.log(this.cardsProduct);
         if(products){

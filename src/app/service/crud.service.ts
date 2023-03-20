@@ -15,6 +15,10 @@ export class CrudService {
     return this.http.get(this.laravelApi + 'productos');
   }
 
+  getproductsMore(){
+    return this.http.get(this.laravelApi + 'productos');
+  }
+
   getProductById(id: number){
     return this.http.get(this.laravelApi + 'products/' + id);
   }
