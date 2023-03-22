@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { CrudService } from '../../service/crud.service';
 import { ToastController } from '@ionic/angular';
 import { Router, ActivatedRoute } from '@angular/router';
+import { SweetService } from '../../service/sweet.service';
 
 @Component({
   selector: 'app-add-edit-categoria',
@@ -17,6 +18,7 @@ export class AddEditCategoriaPage implements OnInit {
     private productService: CrudService,
     private toastCtrl: ToastController,
     private router: Router,
+    private sweet: SweetService,
     private activatedRoute: ActivatedRoute) { }
 
   formCategoria : FormGroup = this.fb.group({
@@ -32,6 +34,7 @@ export class AddEditCategoriaPage implements OnInit {
       console.log('newC',newC);
 
       if(newCategoria){
+        this.sweet.success('Categoria registrado');
         this.presentToast('Categoria registrado', 'success');
         this.router.navigate(['/tabs/tab3']);
       }

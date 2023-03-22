@@ -84,7 +84,7 @@ export class Tab3Page {
   }
 
   agregar(){
-    this.router.navigate(['/addCategoria']);
+    this.router.navigate(['/tabs/addCategoria']);
   }
 
 }

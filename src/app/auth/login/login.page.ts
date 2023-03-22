@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { login } from 'src/app/interface/auth';
 import { AuthService } from 'src/app/service/auth.service';
+import { SweetService } from 'src/app/service/sweet.service';
 
 @Component({
   selector: 'app-login',
@@ -20,6 +21,7 @@ export class LoginPage implements OnInit {
     private fb: FormBuilder,
     private auth: AuthService,
     private router: Router,
+    private sweet: SweetService
   ) { }
 
   ngOnInit() {
@@ -33,9 +35,13 @@ export class LoginPage implements OnInit {
 
       if(data.access_token){
         localStorage.setItem('token',data.access_token);
+        localStorage.setItem('rol',data.user.rol);
+        localStorage.setItem('user',JSON.stringify(data))
         // this.router.navigateByUrl('/home');
         console.log('existe si llego aqui');
+        this.sweet.success('Bienvenido');
         this.router.navigateByUrl('/tabs/tab1');
+        this.formLogin.reset();
       }
 
 

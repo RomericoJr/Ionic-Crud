@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { login, register } from '../interface/auth';
 import { Observable } from 'rxjs';
@@ -16,6 +16,29 @@ export class AuthService {
 
   register(register: register):Observable<Request>{
     return this.http.post<Request>(this.laravelApi + 'register', register)
+  }
+
+  data_profile(){
+    const user:any = localStorage.getItem('user');
+    const userObj = JSON.parse(user);
+
+    const token = userObj.access_token;
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+    return this.http.get(this.laravelApi + 'userProfile',{headers:headers});
+  }
+
+  logout(){
+    const user:any = localStorage.getItem('user');
+    const userObj = JSON.parse(user);
+
+    const token = userObj.access_token;
+    const headers = new HttpHeaders({
+      Authorization: `Bearer ${token}`,
+    });
+    return this.http.get(this.laravelApi + 'logout',{headers:headers});
+
   }
 
   // status(){

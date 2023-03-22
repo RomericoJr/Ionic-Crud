@@ -34,6 +34,7 @@ export class RegisterPage implements OnInit {
         console.warn('Registro exitoso');
 
         console.log('se registro');
+        this.formRegister.reset();
         this.router.navigateByUrl('/inicio/login');
       }
     });

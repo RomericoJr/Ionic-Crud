@@ -3,6 +3,7 @@ import { CrudService } from '../service/crud.service';
 import { AlertController, ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { product } from '../interface';
+import { SweetService } from '../service/sweet.service';
 
 @Component({
   selector: 'app-tab2',
@@ -19,7 +20,8 @@ export class Tab2Page {
     private productService: CrudService,
     private alertCtrl: AlertController,
     private toastCtrl : ToastController,
-    private router: Router
+    private router: Router,
+    private sweet:SweetService
   ) {
     // this.getAllProducts();
   }
@@ -40,7 +42,7 @@ export class Tab2Page {
   }
 
   editProduct(product: product){
-    this.router.navigate(['edit',product.id])
+    this.router.navigate(['tabs/edit',product.id])
   }
   async confirmacion(product: product){
     const alert = await this.alertCtrl.create({
@@ -88,6 +90,6 @@ export class Tab2Page {
   }
 
   agregar(){
-    this.router.navigate(['add']);
+    this.router.navigateByUrl('/tabs/add');
   }
 }

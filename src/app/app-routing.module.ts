@@ -46,6 +46,14 @@ const routes: Routes = [
     path: 'profile-user',
     loadChildren: () => import('./auth/profile-user/profile-user.module').then( m => m.ProfileUserPageModule)
   },
+  {
+    path: 'favorito',
+    loadChildren: () => import('./pages/favorito/favorito.module').then( m => m.FavoritoPageModule)
+  },
+  {
+    path: 'carrito',
+    loadChildren: () => import('./pages/carrito/carrito.module').then( m => m.CarritoPageModule)
+  },
 ];
 @NgModule({
   imports: [
