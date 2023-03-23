@@ -1,3 +1,4 @@
+import { ComponentsModule } from './../../components/components.module';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
@@ -13,7 +14,8 @@ import { CarritoPage } from './carrito.page';
     CommonModule,
     FormsModule,
     IonicModule,
-    CarritoPageRoutingModule
+    CarritoPageRoutingModule,
+    ComponentsModule
   ],
   declarations: [CarritoPage]
 })

@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { CrudService } from '../service/crud.service';
 import { LoadingController } from '@ionic/angular';
 import { product } from '../interface';
+import { EmmiterService } from '../service/emmiter.service';
 
 @Component({
   selector: 'app-tab1',
@@ -14,9 +15,14 @@ export class Tab1Page {
 
   constructor(
     private productService: CrudService,
-    private loadingCtrl : LoadingController
+    private loadingCtrl : LoadingController,
+    private emitS: EmmiterService
 
     ) {
+      this.emitS.getNewProduct.subscribe((product: any)=>{
+        console.log('escuchando',product);
+        this.cardsProduct.push(product);
+      });
       this.getAllProducts();
     }
 

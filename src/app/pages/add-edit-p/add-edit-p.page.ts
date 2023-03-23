@@ -4,6 +4,7 @@ import { FormBuilder,FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ToastController } from '@ionic/angular';
 import { CrudService } from 'src/app/service/crud.service';
+import { EmmiterService } from 'src/app/service/emmiter.service';
 
 @Component({
   selector: 'app-add-edit-p',
@@ -39,7 +40,8 @@ export class AddEditPPage implements OnInit {
     private productService: CrudService,
     private toastCtrl: ToastController,
     private router: Router,
-    private activatedRoute: ActivatedRoute
+    private activatedRoute: ActivatedRoute,
+    private emmitSer: EmmiterService
 
   ) { }
 
@@ -142,6 +144,7 @@ export class AddEditPPage implements OnInit {
     subscribe((newP) =>{
       console.log('Este producto se guardara',newP);
       if(newP){
+        this.emmitSer.setNewProduct(newP);
         this.presentToast('Producto registrado', 'success');
         this.router.navigate(['tabs/tab2']);
       }

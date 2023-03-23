@@ -4,9 +4,34 @@
   <ion-card-header>
     <ion-card-title>{{card.name}}</ion-card-title>
 
+    <ion-row>
+
+      <ion-col>
         <ion-card-subtitle>Marca: {{card.marca}}</ion-card-subtitle>
         <ion-card-subtitle> Categoria: {{card.categoria}}</ion-card-subtitle>
         <ion-card-subtitle> Precio: {{card.precio}}</ion-card-subtitle>
+      </ion-col>
+
+
+      <ion-col alight="right">
+          <!-- <label>Carrito</label> -->
+          <ion-button
+          (click)="addCarrito()"
+          fill="clear">
+          <ion-icon slot="icon-only" name="cart-outline"></ion-icon>
+        </ion-button>
+
+        <ion-button
+        (click)="addFavorito()"
+        fill="clear">
+        <ion-icon slot="icon-only" name="heart-outline"></ion-icon>
+      </ion-button>
+
+      </ion-col>
+
+    </ion-row>
+
+
 
 
 

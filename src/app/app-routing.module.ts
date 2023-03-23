@@ -54,6 +54,7 @@ const routes: Routes = [
     path: 'carrito',
     loadChildren: () => import('./pages/carrito/carrito.module').then( m => m.CarritoPageModule)
   },
+
 ];
 @NgModule({
   imports: [

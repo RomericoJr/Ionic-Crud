@@ -1,9 +1,74 @@
-<ion-header>
-  <ion-toolbar>
-    <ion-title>favorito</ion-title>
-  </ion-toolbar>
-</ion-header>
+<app-hearder Title="Favorito"></app-hearder>
 
-<ion-content>
+<ion-content [fullscreen]="true">
+  <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Favorito</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <ion-grid fixed
+  *ngIf="arrayFavorites.length > 0">
+
+    <ion-row>
+
+      <ion-col size="12" sizeLg="3" sizeMd="6" sizeXs="12"
+
+      *ngFor="let fav of arrayFavorites">
+
+                <ion-card>
+                  <img alt="Silhouette of mountains"
+                  src="{{fav.UrlImage}}" />
+                  <ion-card-header>
+                    <ion-card-title>{{fav.name}}</ion-card-title>
+
+                    <ion-row>
+
+                      <ion-col>
+                        <ion-card-subtitle>Marca: {{fav.marca}}</ion-card-subtitle>
+                        <ion-card-subtitle> Categoria: {{fav.categoria}}</ion-card-subtitle>
+                        <ion-card-subtitle> Precio: {{fav.precio}}</ion-card-subtitle>
+                      </ion-col>
+
+
+                      <ion-col alight="right">
+                          <!-- <label>Carrito</label> -->
+                          <ion-button
+
+                          fill="clear">
+                          <ion-icon slot="icon-only" name="cart-outline"></ion-icon>
+                        </ion-button>
+
+                        <ion-button
+                        (click)="deleteFavoritoById(fav.id)"
+                        fill="clear">
+                        <ion-icon slot="icon-only" name="heart"></ion-icon>
+                      </ion-button>
+                      </ion-col>
+                    </ion-row>
+                  </ion-card-header>
+                  <ion-card-content>
+                   {{fav.descripcion}}
+                  </ion-card-content>
+                </ion-card>
+
+
+      </ion-col>
+
+
+    </ion-row>
+  </ion-grid>
+
+  <ion-grid *ngIf="arrayFavorites.length == 0">
+
+    <ion-col >
+    <ion-card>
+      <ion-card-header>
+        <ion-card-title>No hay favoritos</ion-card-title>
+      </ion-card-header>
+    </ion-card>
+  </ion-col>
+
+  </ion-grid>
 
 </ion-content>
