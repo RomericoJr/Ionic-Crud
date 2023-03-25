@@ -50,4 +50,8 @@ export class Tab1Page {
 
 
     }
+
+    //crear una función que permita cambiar el estado de un icono en ionic si es que se encuentra en true o false
+
+
 }
