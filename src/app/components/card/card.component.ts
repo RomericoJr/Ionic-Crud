@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { FavoritosService } from '../../service/favoritos.service';
 import { CarritoService } from '../../service/carrito.service';
+import { EmmiterService } from 'src/app/service/emmiter.service';
 
 @Component({
   selector: 'app-card',
@@ -12,15 +13,39 @@ export class CardComponent  implements OnInit {
   @Input() card: any = [];
   favoritos: any[] = [];
 
+  icono!: boolean ;
+  statusIcon: string = 'heart-outline';
+
   constructor(
     private favService : FavoritosService,
-    private carrService : CarritoService
+    private carrService : CarritoService,
+    private emitS : EmmiterService
   ) { }
 
-  ngOnInit() {}
+  ngOnInit() {
+    this.iconStatus();
+  }
+
+  iconStatus(){
+    let idStatus: any;
+    idStatus = JSON.parse(localStorage.getItem('favoritos') || '[]') || [];
+    // console.log('pruebita',idStatus);
+    if(idStatus.find((fav :any) => fav.id === this.card.id)){
+      this.icono = true;
+      this.statusIcon = 'heart';
+      // console.log('icono',this.icono);
+
+    } else {
+      this.icono = false;
+      this.statusIcon = 'heart-outline';
+      // console.log('icono',this.icono);
+    }
+  }
+
 
   addFavorito(){
     this.favService.addFavorito(this.card);
+    this.iconStatus();
   }
 
   addCarrito(){

@@ -15,16 +15,16 @@ export class FavoritoPage implements OnInit {
   constructor(
     private  favService : FavoritosService,
     private emmiterS : EmmiterService
-  ) { }
-
-  ngOnInit() {
-    this.emmiterS.getNewProduct.subscribe((product) => {
-      console.log('escuche ', product);
+  ) {
+    this.emmiterS.getNewFavorite.subscribe((product) => {
+      console.log('escuche favorit ', product);
       this.arrayFavorites.push(product);
 
     })
     this.getFavorites();
-  }
+   }
+
+  ngOnInit() {  }
 
   getFavorites(){
     const favoritesString = localStorage.getItem('favoritos');

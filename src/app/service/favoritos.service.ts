@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import { EmmiterService } from './emmiter.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,7 +12,9 @@ export class FavoritosService {
   deleteFavorite:[] =[];
   arrayFavorites: any[] = [];
 
-  constructor() { }
+  constructor(
+    private emitS : EmmiterService
+  ) { }
 
   addFavorito(pro:any){
     this.misFavoritos = JSON.parse(localStorage.getItem('favoritos')  || '[]') || [];
@@ -24,6 +27,8 @@ export class FavoritosService {
       this.misFavoritos = [pro,...this.misFavoritos];
     }
     localStorage.setItem('favoritos', JSON.stringify(this.misFavoritos));
+    this.emitS.setNewFavorite(this.misFavoritos);
+
   }
 
 

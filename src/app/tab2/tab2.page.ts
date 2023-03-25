@@ -4,6 +4,7 @@ import { AlertController, ToastController } from '@ionic/angular';
 import { Router } from '@angular/router';
 import { product } from '../interface';
 import { SweetService } from '../service/sweet.service';
+import { EmmiterService } from '../service/emmiter.service';
 
 @Component({
   selector: 'app-tab2',
@@ -21,9 +22,13 @@ export class Tab2Page {
     private alertCtrl: AlertController,
     private toastCtrl : ToastController,
     private router: Router,
+    private emitS : EmmiterService,
     private sweet:SweetService
   ) {
-    // this.getAllProducts();
+    this.emitS.getNewProduct.subscribe((res) => {
+      console.log('ya lo escucuche',res);
+      this.listProducts.push(res);
+    });
   }
 
   ngOnInit(){
